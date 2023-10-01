@@ -27,8 +27,9 @@ class Git2Spider(scrapy.Spider):
             formdata=post_data
         )
 
-    def after_login(self,response):
-        yield scrapy.Request('https://github.com/heiyukuaidou23',callback=self.check_login)
+    def after_login(self, response):
+        yield scrapy.Request('https://github.com/heiyukuaidou23', callback=self.check_login)
 
-    def check_login(self,response):
-        print(response.xpath('/html/body/div[1]/div[1]/header/div[1]/div[1]/div/div[2]/nav/ul/li/a/span/text()').extract_first())
+    def check_login(self, response):
+        print(response.xpath(
+            '/html/body/div[1]/div[1]/header/div[1]/div[1]/div/div[2]/nav/ul/li/a/span/text()').extract_first())
